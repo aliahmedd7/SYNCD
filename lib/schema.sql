@@ -6,6 +6,7 @@ create table if not exists clients (
   industry text not null,
   contact_email text not null,
   status text not null default 'prospect' check (status in ('active', 'inactive', 'prospect')),
+  service_type text check (service_type in ('website', 'automation', 'ai_campaign', 'full_service')),
   created_at timestamptz not null default now()
 );
 

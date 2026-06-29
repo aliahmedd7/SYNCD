@@ -11,6 +11,7 @@ export type Client = {
   industry: string
   contact_email: string
   status: 'active' | 'inactive' | 'prospect'
+  service_type: 'website' | 'automation' | 'ai_campaign' | 'full_service' | null
   created_at: string
 }
 
@@ -18,7 +19,7 @@ export type Project = {
   id: string
   client_id: string
   name: string
-  description: string | null
+  type: 'website' | 'automation' | 'ai_campaign' | null
   status: 'planning' | 'active' | 'completed' | 'paused'
   start_date: string | null
   end_date: string | null
@@ -28,7 +29,8 @@ export type Project = {
 
 export type Campaign = {
   id: string
-  project_id: string
+  project_id: string | null
+  client_id: string | null
   name: string
   platform: string
   status: 'draft' | 'active' | 'paused' | 'completed'

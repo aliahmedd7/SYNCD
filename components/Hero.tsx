@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -19,7 +19,7 @@ export default function Hero() {
           Creative Tech Agency
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-semibold leading-[0.95] tracking-tight text-white mb-8">
+        <h1 className="text-[2.8rem] sm:text-6xl md:text-8xl font-semibold leading-[0.95] tracking-tight text-white mb-8">
           We build
           <br />
           <span className="text-[#c8ff00]">brands</span> that
@@ -27,7 +27,7 @@ export default function Hero() {
           move.
         </h1>
 
-        <p className="text-lg text-white/40 max-w-xl mx-auto leading-relaxed mb-12">
+        <p className="text-base md:text-lg text-white/40 max-w-xl mx-auto leading-relaxed mb-10 md:mb-12">
           Custom websites, intelligent automations, and AI-crafted visual campaigns
           — for brands ready to stand out.
         </p>

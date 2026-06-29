@@ -28,11 +28,12 @@ const links = [
     ),
   },
   {
-    href: '/dashboard/campaigns',
-    label: 'Campaigns',
+    href: '/dashboard/projects',
+    label: 'Projects',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+        <rect x="2" y="7" width="20" height="14" rx="2" />
+        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
       </svg>
     ),
   },
