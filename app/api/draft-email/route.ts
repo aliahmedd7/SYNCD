@@ -25,7 +25,7 @@ async function describeFromWebsite(url: string): Promise<string | null> {
       html.match(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']+)["']/i)
     if (metaMatch?.[1]) return decodeEntities(metaMatch[1]).slice(0, 500)
 
-    const pMatch = html.match(/<p[^>]*>(.*?)<\/p>/is)
+    const pMatch = html.match(/<p[^>]*>([\s\S]*?)<\/p>/i)
     if (pMatch?.[1]) {
       const text = decodeEntities(pMatch[1].replace(/<[^>]+>/g, '')).trim()
       if (text.length > 30) return text.slice(0, 500)
