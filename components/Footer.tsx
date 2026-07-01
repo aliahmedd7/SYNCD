@@ -5,7 +5,7 @@ export default function Footer() {
         <p className="text-xs text-white/20">© 2026 SYNCD</p>
         <div className="flex items-center gap-5">
           {/* Instagram */}
-          <a href="#" aria-label="Instagram" className="text-white/25 hover:text-white transition-colors">
+          <a href="https://instagram.com/syncdd.site" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/25 hover:text-white transition-colors">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <rect x="2" y="2" width="20" height="20" rx="5" />
               <circle cx="12" cy="12" r="5" />

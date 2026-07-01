@@ -85,8 +85,14 @@ export async function POST(request: NextRequest) {
     results.map((r) => (r.place_id ? getDetails(r.place_id, apiKey) : Promise.resolve({}))),
   )
 
+  type PlaceDetails = {
+    website?: string
+    formatted_phone_number?: string
+    international_phone_number?: string
+  }
+
   const rows = results.map((r, i) => {
-    const d = detailsList[i]
+    const d = (detailsList[i] as PlaceDetails) ?? {}
     return {
       business_name: r.name ?? 'Unknown',
       category: prettyType(r.types) || category,
