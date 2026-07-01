@@ -15,7 +15,7 @@ export default async function ClientsPage() {
   const clients = await getClients()
 
   return (
-    <div className="px-8 py-8 max-w-5xl">
+    <div className="px-4 py-6 md:px-8 md:py-8 max-w-5xl">
       <div className="flex items-end justify-between mb-8">
         <div>
           <p className="text-xs text-white/25 uppercase tracking-widest mb-1">Clients</p>

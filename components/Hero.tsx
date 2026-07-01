@@ -28,7 +28,7 @@ export default function Hero() {
         </h1>
 
         <p className="text-base md:text-lg text-white/40 max-w-xl mx-auto leading-relaxed mb-10 md:mb-12">
-          Custom websites, intelligent automations, and AI-crafted visual campaigns
+          Custom development, intelligent automations, and AI-crafted visual campaigns
           — for brands ready to stand out.
         </p>
 

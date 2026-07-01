@@ -17,6 +17,17 @@ const links = [
     ),
   },
   {
+    href: '/dashboard/pipeline',
+    label: 'Pipeline',
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <rect x="2" y="3" width="5" height="18" rx="1" />
+        <rect x="9.5" y="3" width="5" height="13" rx="1" />
+        <rect x="17" y="3" width="5" height="8" rx="1" />
+      </svg>
+    ),
+  },
+  {
     href: '/dashboard/clients',
     label: 'Clients',
     icon: (
@@ -37,13 +48,23 @@ const links = [
       </svg>
     ),
   },
+  {
+    href: '/dashboard/outreach',
+    label: 'Outreach',
+    icon: (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+        <path d="m22 2-7 20-4-9-9-4Z" />
+        <path d="M22 2 11 13" />
+      </svg>
+    ),
+  },
 ]
 
 export default function Sidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-56 flex-shrink-0 flex flex-col border-r border-white/[0.06] bg-[#0c0c0e]">
+    <aside className="hidden md:flex w-56 flex-shrink-0 flex-col border-r border-white/[0.06] bg-[#0c0c0e]">
       <div className="px-6 py-5 border-b border-white/[0.06] flex items-center justify-between">
         <span className="text-xs font-semibold tracking-[0.2em] text-white/80 uppercase">SYNCD</span>
         <Link href="/" className="text-[10px] text-white/20 hover:text-white/50 transition-colors tracking-widest uppercase">
@@ -53,7 +74,7 @@ export default function Sidebar() {
 
       <nav className="flex-1 px-3 py-4 space-y-0.5">
         {links.map((link) => {
-          const active = pathname === link.href
+          const active = pathname === link.href || (link.href !== '/dashboard/overview' && pathname.startsWith(link.href))
           return (
             <Link
               key={link.href}

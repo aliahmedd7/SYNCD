@@ -1,7 +1,7 @@
 const services = [
   {
     number: '01',
-    title: 'Custom Websites',
+    title: 'Custom Digital Builds',
     description:
       'High-performance sites built from scratch — pixel-perfect design, fast load times, and built to convert. No templates, no compromises.',
     tags: ['Design', 'Development', 'CMS'],
