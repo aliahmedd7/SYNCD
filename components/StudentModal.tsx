@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useTransition } from 'react'
+import { useRouter } from 'next/navigation'
 import { addStudent, updateStudent, type Student, type StudentStatus } from '@/lib/students'
 
 const inputClass =
@@ -18,8 +19,10 @@ export default function StudentModal({
   onClose: () => void
   student?: Student | null
 }) {
+  const router = useRouter()
   const formRef = useRef<HTMLFormElement>(null)
   const [error, setError] = useState<string | null>(null)
+  const [pending, startTransition] = useTransition()
   const isEdit = !!student
 
   useEffect(() => {
@@ -34,17 +37,11 @@ export default function StudentModal({
     const fd = new FormData(e.currentTarget)
 
     const name = (fd.get('name') as string)?.trim()
-    if (!name) {
-      setError('Student name is required.')
-      return
-    }
+    if (!name) { setError('Student name is required.'); return }
 
     const budget = Number(fd.get('budget') || 0)
     const paid = Number(fd.get('paid') || 0)
-    if (paid > budget) {
-      setError('Amount paid can’t be more than the total budget.')
-      return
-    }
+    if (paid > budget) { setError("Amount paid can't exceed the total budget."); return }
 
     const payload = {
       name,
@@ -58,12 +55,19 @@ export default function StudentModal({
       notes: (fd.get('notes') as string)?.trim() || '',
     }
 
-    if (isEdit && student) {
-      updateStudent(student.id, payload)
-    } else {
-      addStudent(payload)
-    }
-    onClose()
+    startTransition(async () => {
+      try {
+        if (isEdit && student) {
+          await updateStudent(student.id, payload)
+        } else {
+          await addStudent(payload)
+        }
+        router.refresh()
+        onClose()
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Something went wrong.')
+      }
+    })
   }
 
   return (
@@ -106,13 +110,7 @@ export default function StudentModal({
 
             <div className="flex flex-col gap-1.5">
               <label className={labelClass}>Project Idea</label>
-              <textarea
-                name="idea"
-                rows={2}
-                defaultValue={student?.idea}
-                placeholder="AI-powered attendance system…"
-                className={`${inputClass} resize-none`}
-              />
+              <textarea name="idea" rows={2} defaultValue={student?.idea} placeholder="AI-powered attendance system…" className={`${inputClass} resize-none`} />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -139,13 +137,7 @@ export default function StudentModal({
 
             <div className="flex flex-col gap-1.5">
               <label className={labelClass}>Notes</label>
-              <textarea
-                name="notes"
-                rows={2}
-                defaultValue={student?.notes}
-                placeholder="Anything else to remember…"
-                className={`${inputClass} resize-none`}
-              />
+              <textarea name="notes" rows={2} defaultValue={student?.notes} placeholder="Anything else to remember…" className={`${inputClass} resize-none`} />
             </div>
 
             {error && <p className="text-xs text-red-400">{error}</p>}
@@ -154,19 +146,11 @@ export default function StudentModal({
 
         {/* Footer */}
         <div className="px-8 py-6 border-t border-white/[0.06] flex gap-3">
-          <button
-            type="button"
-            onClick={onClose}
-            className="flex-1 py-3 rounded-lg border border-white/[0.08] text-sm text-white/40 hover:text-white hover:border-white/20 transition-colors"
-          >
+          <button type="button" onClick={onClose} className="flex-1 py-3 rounded-lg border border-white/[0.08] text-sm text-white/40 hover:text-white hover:border-white/20 transition-colors">
             Cancel
           </button>
-          <button
-            form="student-form"
-            type="submit"
-            className="flex-1 py-3 rounded-lg bg-[#c8ff00] text-black text-sm font-semibold hover:bg-white transition-colors"
-          >
-            {isEdit ? 'Save Changes' : 'Add Student'}
+          <button form="student-form" type="submit" disabled={pending} className="flex-1 py-3 rounded-lg bg-[#c8ff00] text-black text-sm font-semibold hover:bg-white transition-colors disabled:opacity-50">
+            {pending ? 'Saving…' : isEdit ? 'Save Changes' : 'Add Student'}
           </button>
         </div>
       </div>

@@ -1,6 +1,4 @@
-'use client'
-
-import { useSyncExternalStore } from 'react'
+import { supabase } from './supabase'
 
 export type StudentStatus = 'active' | 'completed' | 'on_hold'
 
@@ -11,87 +9,43 @@ export type Student = {
   idea: string
   phone: string
   email: string
-  budget: number   // total the student is paying
-  paid: number     // amount collected so far (deposit + installments)
+  budget: number
+  paid: number
   status: StudentStatus
   notes: string
-  createdAt: string
+  created_at: string
 }
 
-export type NewStudent = Omit<Student, 'id' | 'createdAt'>
+export type NewStudent = Omit<Student, 'id' | 'created_at'>
 
-const KEY = 'syncd:students'
-const listeners = new Set<() => void>()
-let cache: Student[] | null = null
-
-function read(): Student[] {
-  if (typeof window === 'undefined') return []
-  try {
-    const raw = localStorage.getItem(KEY)
-    return raw ? (JSON.parse(raw) as Student[]) : []
-  } catch {
-    return []
-  }
+export async function getStudents(): Promise<Student[]> {
+  const { data, error } = await supabase
+    .from('students')
+    .select('*')
+    .order('created_at', { ascending: false })
+  if (error) throw new Error(error.message)
+  return data ?? []
 }
 
-function commit(list: Student[]) {
-  cache = list
-  if (typeof window !== 'undefined') {
-    localStorage.setItem(KEY, JSON.stringify(list))
-  }
-  listeners.forEach((l) => l())
+export async function addStudent(s: NewStudent): Promise<void> {
+  const { error } = await supabase.from('students').insert(s)
+  if (error) throw new Error(error.message)
 }
 
-function subscribe(cb: () => void) {
-  listeners.add(cb)
-  const onStorage = (e: StorageEvent) => {
-    if (e.key === KEY) {
-      cache = read()
-      cb()
-    }
-  }
-  window.addEventListener('storage', onStorage)
-  return () => {
-    listeners.delete(cb)
-    window.removeEventListener('storage', onStorage)
-  }
+export async function updateStudent(id: string, patch: Partial<NewStudent>): Promise<void> {
+  const { error } = await supabase.from('students').update(patch).eq('id', id)
+  if (error) throw new Error(error.message)
 }
 
-function getSnapshot(): Student[] {
-  if (cache === null) cache = read()
-  return cache
-}
-
-function getServerSnapshot(): Student[] {
-  return []
-}
-
-/** React hook — re-renders any component when the student list changes. */
-export function useStudents(): Student[] {
-  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
-}
-
-export function addStudent(s: NewStudent) {
-  const id =
-    typeof crypto !== 'undefined' && 'randomUUID' in crypto
-      ? crypto.randomUUID()
-      : Math.random().toString(36).slice(2)
-  commit([{ ...s, id, createdAt: new Date().toISOString() }, ...getSnapshot()])
-}
-
-export function updateStudent(id: string, patch: Partial<Student>) {
-  commit(getSnapshot().map((s) => (s.id === id ? { ...s, ...patch } : s)))
-}
-
-export function deleteStudent(id: string) {
-  commit(getSnapshot().filter((s) => s.id !== id))
+export async function deleteStudent(id: string): Promise<void> {
+  const { error } = await supabase.from('students').delete().eq('id', id)
+  if (error) throw new Error(error.message)
 }
 
 export function remaining(s: Student): number {
   return Math.max(0, s.budget - s.paid)
 }
 
-/** Format a number as Egyptian Pounds, e.g. 12000 -> "E£12,000". */
 export function egp(n: number): string {
   return 'E£' + Math.round(n).toLocaleString('en-US')
 }

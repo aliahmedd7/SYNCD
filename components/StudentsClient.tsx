@@ -1,14 +1,8 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import {
-  useStudents,
-  deleteStudent,
-  remaining,
-  egp,
-  STATUS_META,
-  type Student,
-} from '@/lib/students'
+import { useRouter } from 'next/navigation'
+import { deleteStudent, remaining, egp, STATUS_META, type Student } from '@/lib/students'
 import StudentModal from './StudentModal'
 
 function PayBar({ s }: { s: Student }) {
@@ -32,23 +26,24 @@ function PayBar({ s }: { s: Student }) {
   )
 }
 
-export default function StudentsClient() {
-  const students = useStudents()
+export default function StudentsClient({ initialStudents }: { initialStudents: Student[] }) {
+  const router = useRouter()
   const [query, setQuery] = useState('')
   const [modalOpen, setModalOpen] = useState(false)
   const [editing, setEditing] = useState<Student | null>(null)
   const [expanded, setExpanded] = useState<string | null>(null)
+  const [deleting, setDeleting] = useState<string | null>(null)
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
-    if (!q) return students
-    return students.filter(
+    if (!q) return initialStudents
+    return initialStudents.filter(
       (s) =>
         s.name.toLowerCase().includes(q) ||
         s.major.toLowerCase().includes(q) ||
         s.idea.toLowerCase().includes(q),
     )
-  }, [students, query])
+  }, [initialStudents, query])
 
   function openAdd() {
     setEditing(null)
@@ -58,9 +53,14 @@ export default function StudentsClient() {
     setEditing(s)
     setModalOpen(true)
   }
-  function confirmDelete(s: Student) {
-    if (window.confirm(`Delete ${s.name}? This can’t be undone.`)) {
-      deleteStudent(s.id)
+  async function confirmDelete(s: Student) {
+    if (!window.confirm(`Delete ${s.name}? This can't be undone.`)) return
+    setDeleting(s.id)
+    try {
+      await deleteStudent(s.id)
+      router.refresh()
+    } finally {
+      setDeleting(null)
     }
   }
 
@@ -88,13 +88,13 @@ export default function StudentsClient() {
         </div>
       </div>
 
-      {students.length === 0 ? (
+      {initialStudents.length === 0 ? (
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-12 text-center">
           <p className="text-white/25 text-sm">No students yet. Click + Add to get started.</p>
         </div>
       ) : filtered.length === 0 ? (
         <div className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-12 text-center">
-          <p className="text-white/25 text-sm">No students match “{query}”.</p>
+          <p className="text-white/25 text-sm">No students match &quot;{query}&quot;.</p>
         </div>
       ) : (
         <>
@@ -144,14 +144,19 @@ export default function StudentsClient() {
                             <button onClick={() => openEdit(s)} className="p-1.5 rounded-md text-white/30 hover:text-white hover:bg-white/[0.06] transition-colors" aria-label="Edit">
                               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
                             </button>
-                            <button onClick={() => confirmDelete(s)} className="p-1.5 rounded-md text-white/30 hover:text-red-400 hover:bg-red-400/[0.08] transition-colors" aria-label="Delete">
+                            <button
+                              onClick={() => confirmDelete(s)}
+                              disabled={deleting === s.id}
+                              className="p-1.5 rounded-md text-white/30 hover:text-red-400 hover:bg-red-400/[0.08] transition-colors disabled:opacity-40"
+                              aria-label="Delete"
+                            >
                               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" /></svg>
                             </button>
                           </div>
                         </td>
                       </tr>
                       {isOpen && (
-                        <tr className="bg-white/[0.015] border-b border-white/[0.04]">
+                        <tr key={`${s.id}-detail`} className="bg-white/[0.015] border-b border-white/[0.04]">
                           <td colSpan={6} className="px-5 py-4">
                             <div className="grid sm:grid-cols-2 gap-4 text-sm">
                               <div>
@@ -168,7 +173,7 @@ export default function StudentsClient() {
                               </div>
                               <div>
                                 <p className="text-[11px] text-white/30 uppercase tracking-widest mb-1">Added</p>
-                                <p className="text-white/60">{new Date(s.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
+                                <p className="text-white/60">{new Date(s.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</p>
                               </div>
                             </div>
                           </td>
@@ -213,7 +218,13 @@ export default function StudentsClient() {
 
                   <div className="flex items-center gap-2 mt-4 pt-3 border-t border-white/[0.05]">
                     <button onClick={() => openEdit(s)} className="flex-1 py-2 rounded-lg border border-white/[0.08] text-xs text-white/50 hover:text-white hover:border-white/20 transition-colors">Edit</button>
-                    <button onClick={() => confirmDelete(s)} className="flex-1 py-2 rounded-lg border border-white/[0.08] text-xs text-white/40 hover:text-red-400 hover:border-red-400/30 transition-colors">Delete</button>
+                    <button
+                      onClick={() => confirmDelete(s)}
+                      disabled={deleting === s.id}
+                      className="flex-1 py-2 rounded-lg border border-white/[0.08] text-xs text-white/40 hover:text-red-400 hover:border-red-400/30 transition-colors disabled:opacity-40"
+                    >
+                      {deleting === s.id ? 'Deleting…' : 'Delete'}
+                    </button>
                   </div>
                 </div>
               )
@@ -222,7 +233,11 @@ export default function StudentsClient() {
         </>
       )}
 
-      <StudentModal open={modalOpen} onClose={() => setModalOpen(false)} student={editing} />
+      <StudentModal
+        open={modalOpen}
+        onClose={() => { setModalOpen(false); router.refresh() }}
+        student={editing}
+      />
     </div>
   )
 }
