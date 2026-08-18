@@ -28,8 +28,7 @@ export default function Hero() {
         </h1>
 
         <p className="text-base md:text-lg text-white/40 max-w-xl mx-auto leading-relaxed mb-10 md:mb-12">
-          Custom development, intelligent automations, and AI-crafted visual campaigns
-          — for brands ready to stand out.
+          Most brands look the part. Few are built to close. We build the ones that do.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

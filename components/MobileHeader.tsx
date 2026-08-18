@@ -18,44 +18,13 @@ const links = [
     ),
   },
   {
-    href: '/dashboard/pipeline',
-    label: 'Pipeline',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="2" y="3" width="5" height="18" rx="1" />
-        <rect x="9.5" y="3" width="5" height="13" rx="1" />
-        <rect x="17" y="3" width="5" height="8" rx="1" />
-      </svg>
-    ),
-  },
-  {
-    href: '/dashboard/clients',
-    label: 'Clients',
+    href: '/dashboard/students',
+    label: 'Students',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
         <circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-      </svg>
-    ),
-  },
-  {
-    href: '/dashboard/projects',
-    label: 'Projects',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="2" y="7" width="20" height="14" rx="2" />
-        <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
-      </svg>
-    ),
-  },
-  {
-    href: '/dashboard/outreach',
-    label: 'Outreach',
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="m22 2-7 20-4-9-9-4Z" />
-        <path d="M22 2 11 13" />
       </svg>
     ),
   },

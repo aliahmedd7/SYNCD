@@ -1,26 +1,20 @@
 const pillars = [
   {
     number: '01',
-    title: 'Speed without sacrifice',
-    body: 'We move fast and ship real work. No endless back-and-forths. You see progress in days, not months.',
+    title: 'We ship fast.',
+    body: 'No 6-week discovery phases. No decks before deliverables. You see real work in days — and it ships when it\'s ready, not when the timeline says so.',
     highlight: false,
   },
   {
     number: '02',
-    title: 'Built for fashion & lifestyle',
-    body: 'We understand aesthetics. Our AI campaigns and sites feel native to your brand world — not like off-the-shelf tech.',
-    highlight: false,
-  },
-  {
-    number: '03',
-    title: 'Owned, not rented',
-    body: 'Everything we build belongs to you. Custom code, clean handoff, full control — no platform lock-in.',
+    title: 'You own everything.',
+    body: 'Custom code, clean handoff, zero lock-in. No monthly retainer just to keep your own site running. What we build is yours — fully.',
     highlight: true,
   },
   {
-    number: '04',
-    title: 'One team, end to end',
-    body: 'Strategy, design, development, and content under one roof. No juggling agencies or freelancers.',
+    number: '03',
+    title: 'One team, start to finish.',
+    body: 'Site, systems, and content under one roof. No briefing three different vendors, no version-control chaos. One point of contact, total clarity.',
     highlight: false,
   },
 ]
@@ -56,8 +50,8 @@ export default function WhySyncd() {
             </p>
           </div>
 
-          {/* Right — 2×2 card grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Right — 3-card stack */}
+          <div className="grid grid-cols-1 gap-4">
             {pillars.map((p) => (
               <div
                 key={p.number}

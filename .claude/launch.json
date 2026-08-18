@@ -2,10 +2,16 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "syncd",
+      "name": "syncd-dashboard",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "rolltech",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:\\Users\\aliah\\rolltech-site", "run", "dev", "--", "-p", "3010"],
+      "port": 3010
     }
   ]
 }
