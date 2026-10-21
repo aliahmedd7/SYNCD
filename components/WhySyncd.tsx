@@ -1,80 +1,64 @@
-const pillars = [
+﻿const pillars = [
   {
-    number: '01',
-    title: 'We ship fast.',
-    body: 'No 6-week discovery phases. No decks before deliverables. You see real work in days — and it ships when it\'s ready, not when the timeline says so.',
-    highlight: false,
+    title: 'Built for Arabic + English',
+    body: 'Your customers message in Arabic, English, or a mix of both. Our agents handle it naturally — the way your customers actually talk.',
   },
   {
-    number: '02',
-    title: 'You own everything.',
-    body: 'Custom code, clean handoff, zero lock-in. No monthly retainer just to keep your own site running. What we build is yours — fully.',
-    highlight: true,
+    title: 'Official WhatsApp API',
+    body: 'We build on the verified WhatsApp Business API — reliable and ban-proof. Not a risky hack on a personal number that can disappear overnight.',
   },
   {
-    number: '03',
-    title: 'One team, start to finish.',
-    body: 'Site, systems, and content under one roof. No briefing three different vendors, no version-control chaos. One point of contact, total clarity.',
-    highlight: false,
+    title: 'One system, not scattered tools',
+    body: 'No stitching together five apps that don’t talk. We connect everything — chat, voice, CRM, calendar — into one system that runs itself.',
+  },
+  {
+    title: 'Real humans behind the AI',
+    body: 'The AI does the heavy lifting, but real people set it up, tune it, and stay on call. You’re never left alone with a bot that broke.',
   },
 ]
 
+function CheckIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4">
+      <path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  )
+}
+
 export default function WhySyncd() {
   return (
-    <section id="why-us" className="relative py-20 md:py-44 px-6 border-t border-white/[0.06] overflow-hidden">
-      {/* Dot grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.035]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }}
-      />
-      {/* Lime glow */}
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#c8ff00]/[0.04] rounded-full blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-start">
-
-          {/* Left — sticky headline */}
+    <section id="why-us" className="py-20 md:py-28 px-6 bg-[#f6f1ea]">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+          {/* Left — headline */}
           <div className="md:sticky md:top-28">
-            <p className="text-xs text-white/25 uppercase tracking-[0.25em] mb-5">Why SYNCD</p>
-            <h2 className="text-4xl md:text-5xl font-semibold leading-tight mb-6">
-              <span className="text-white">The agency</span>
-              <br />
-              <span className="text-white">built </span>
-              <span className="text-[#c8ff00]">different.</span>
+            <p className="text-xs font-semibold text-[#4a3528]/40 uppercase tracking-[0.2em] mb-4">Why SYNCD</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#4a3528] leading-tight tracking-tight mb-5">
+              Serious automation, built for MENA
             </h2>
-            <p className="text-sm text-white/40 leading-relaxed max-w-sm">
-              Most agencies sell you a process. We sell you outcomes. Here's what that actually looks like.
+            <p className="text-lg text-[#4a3528]/55 leading-relaxed max-w-sm">
+              Plenty of people can wire up a chatbot. We build systems your business can actually run on —
+              reliable, bilingual, and backed by real people.
             </p>
           </div>
 
-          {/* Right — 3-card stack */}
+          {/* Right — list */}
           <div className="grid grid-cols-1 gap-4">
             {pillars.map((p) => (
               <div
-                key={p.number}
-                className={`relative rounded-xl border p-6 flex flex-col gap-4 transition-all duration-300 group
-                  hover:border-[#c8ff00]/40 hover:shadow-[0_0_30px_-6px_rgba(200,255,0,0.12)]
-                  ${p.highlight
-                    ? 'border-l-[3px] border-l-[#c8ff00] border-t-white/[0.08] border-r-white/[0.08] border-b-white/[0.08] bg-[#c8ff00]/[0.03]'
-                    : 'border-white/[0.07] bg-[#0d0d0f]'
-                  }`}
+                key={p.title}
+                className="flex gap-4 rounded-2xl border border-[#4a3528]/[0.08] bg-white p-6 shadow-[0_4px_30px_-18px_rgba(74,53,40,0.22)]"
               >
-                <span className={`text-3xl font-black leading-none ${p.highlight ? 'text-[#c8ff00]' : 'text-white/10 group-hover:text-[#c8ff00]/40 transition-colors duration-300'}`}>
-                  {p.number}
-                </span>
+                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4a3528] text-white flex items-center justify-center">
+                  <CheckIcon />
+                </div>
                 <div>
-                  <h3 className="text-base font-semibold text-white mb-2 group-hover:text-[#c8ff00] transition-colors duration-300">
-                    {p.title}
-                  </h3>
-                  <p className="text-sm text-white/40 leading-relaxed">{p.body}</p>
+                  <h3 className="text-base font-bold text-[#4a3528] mb-1.5">{p.title}</h3>
+                  <p className="text-sm text-[#4a3528]/55 leading-relaxed">{p.body}</p>
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

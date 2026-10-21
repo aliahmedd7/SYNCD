@@ -1,13 +1,12 @@
-'use client'
+﻿'use client'
 
 import { useEffect, useState } from 'react'
+import { WHATSAPP_AUDIT_URL } from '@/lib/site'
 
 const NAV_LINKS = [
-  ['Home', '#hero'],
   ['Services', '#services'],
-  ['Why Us', '#why-us'],
-  ['Work', '#work'],
-  ['Contact', '#contact'],
+  ['How It Works', '#how-it-works'],
+  ['Why SYNCD', '#why-us'],
 ] as const
 
 export default function Nav() {
@@ -29,57 +28,54 @@ export default function Nav() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled || menuOpen
-            ? 'bg-[#080809]/95 backdrop-blur-md border-b border-white/[0.06]'
-            : ''
+          scrolled || menuOpen ? 'bg-white/90 backdrop-blur-md border-b border-[#4a3528]/[0.07]' : ''
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-5 sm:px-6 h-18 py-3 flex items-center justify-between">
 
-          {/* Left: hamburger on mobile, SYNCD logo on desktop */}
-          <div className="flex items-center">
-            <button
-              className="md:hidden flex flex-col justify-center gap-[5px] w-8 h-8 -ml-1"
-              onClick={() => setMenuOpen(o => !o)}
-              aria-label="Toggle menu"
-            >
-              <span className={`block w-5 h-[1.5px] bg-white origin-center transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`} />
-              <span className={`block w-5 h-[1.5px] bg-white transition-all duration-300 ${menuOpen ? 'opacity-0 scale-x-0' : ''}`} />
-              <span className={`block w-5 h-[1.5px] bg-white origin-center transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`} />
-            </button>
-            <span className="hidden md:block text-sm font-semibold tracking-[0.2em] text-white uppercase">SYNCD</span>
-          </div>
+          {/* Left: circular menu button */}
+          <button
+            className="flex items-center justify-center w-11 h-11 rounded-full border border-[#4a3528]/15 bg-white hover:bg-[#4a3528]/[0.04] transition-colors"
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label="Toggle menu"
+          >
+            <span className="relative flex flex-col items-center justify-center gap-[5px] w-5 h-5">
+              <span className={`block w-5 h-[2px] rounded bg-[#4a3528] origin-center transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+              <span className={`block w-5 h-[2px] rounded bg-[#4a3528] transition-all duration-300 ${menuOpen ? 'opacity-0 scale-x-0' : ''}`} />
+              <span className={`block w-5 h-[2px] rounded bg-[#4a3528] origin-center transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[7px]' : ''}`} />
+            </span>
+          </button>
 
           {/* Center: desktop nav links */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
             {NAV_LINKS.map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                className="text-sm text-white/40 hover:text-white transition-colors"
-              >
+              <a key={label} href={href} className="text-sm font-medium text-[#4a3528]/55 hover:text-[#4a3528] transition-colors">
                 {label}
               </a>
             ))}
           </nav>
 
-          {/* Right: SYNCD on mobile, LET'S TALK on desktop */}
-          <div>
-            <span className="md:hidden text-sm font-semibold tracking-[0.2em] text-white uppercase">SYNCD</span>
+          {/* Right: wordmark + AI badge + CTA */}
+          <div className="flex items-center gap-3">
+            <a href="#hero" className="flex items-center gap-2">
+              <span className="text-lg font-bold tracking-tight text-[#4a3528]">SYNCD</span>
+              <span className="text-[10px] font-bold text-white bg-[#4a3528] rounded-md px-1.5 py-0.5 leading-none">AI</span>
+            </a>
             <a
-              href="#contact"
-              className="hidden md:inline-flex text-xs font-semibold tracking-widest uppercase px-4 py-2 rounded-full border border-white/20 text-white/70 hover:border-white/60 hover:text-white transition-all"
+              href={WHATSAPP_AUDIT_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex text-sm font-semibold px-5 py-2.5 rounded-full bg-[#4a3528] text-white hover:bg-[#5e4636] transition-colors"
             >
-              Let's Talk
+              Book Your Audit
             </a>
           </div>
-
         </div>
       </header>
 
-      {/* Mobile full-screen overlay menu */}
+      {/* Mobile menu overlay */}
       <div
-        className={`fixed inset-0 z-40 bg-[#080809] flex flex-col justify-center px-8 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-40 bg-white flex flex-col justify-center px-8 md:hidden transition-all duration-300 ${
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
@@ -89,7 +85,7 @@ export default function Nav() {
               key={label}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="text-[2.5rem] font-semibold text-white/70 hover:text-white transition-colors leading-none"
+              className="text-[2.2rem] font-bold text-[#4a3528] leading-none"
             >
               {label}
             </a>
@@ -98,17 +94,17 @@ export default function Nav() {
 
         <div className="mt-14">
           <a
-            href="#contact"
+            href={WHATSAPP_AUDIT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full border border-white/20 text-white/70 text-xs font-semibold tracking-widest uppercase hover:border-white/50 hover:text-white transition-all"
+            className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[#4a3528] text-white text-sm font-semibold hover:bg-[#5e4636] transition-colors"
           >
-            Let's Talk
+            Book Your Audit
           </a>
         </div>
 
-        <p className="absolute bottom-10 left-8 text-xs text-white/15 tracking-widest uppercase">
-          © 2026 SYNCD
-        </p>
+        <p className="absolute bottom-10 left-8 text-xs text-[#4a3528]/30 tracking-widest uppercase">© 2026 SYNCD</p>
       </div>
     </>
   )
