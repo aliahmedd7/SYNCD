@@ -16,7 +16,7 @@ export default function Services() {
     <section id="services" className="py-20 md:py-28 px-6 bg-[#eff4ff]">
       <div className="max-w-6xl mx-auto">
         <div className="max-w-2xl mb-12 md:mb-16">
-          <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">What we do</p>
+          <p className="flex items-center gap-2 text-xs font-semibold text-[#2563eb]/50 uppercase tracking-[0.2em] mb-4"><span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]" />What we do</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight">
             Two AI agents that run your front desk
           </h2>
@@ -56,10 +56,10 @@ export default function Services() {
             </ul>
           </div>
 
-          {/* Stat tile — 24/7 */}
-          <div className={`${tileBase} p-7 flex flex-col justify-center lg:col-span-2`}>
-            <p className="font-display text-5xl font-bold text-[#2563eb] leading-none">24/7</p>
-            <p className="text-sm text-[#2563eb]/55 mt-2 leading-relaxed">Always on. Every message answered, day or night.</p>
+          {/* Stat tile — 24/7 (amber accent) */}
+          <div className="rounded-3xl p-7 flex flex-col justify-center lg:col-span-2 bg-[#f59e0b] shadow-[0_6px_30px_-14px_rgba(245,158,11,0.55)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_-20px_rgba(245,158,11,0.6)]">
+            <p className="font-display text-5xl font-bold text-[#422006] leading-none">24/7</p>
+            <p className="text-sm text-[#5c3a06] mt-2 leading-relaxed font-medium">Always on. Every message answered, day or night.</p>
           </div>
 
           {/* Stat tile — speed */}

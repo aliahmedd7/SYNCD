@@ -16,14 +16,19 @@ export default function Hero() {
         {/* Left — copy */}
         <div className="text-center lg:text-left">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#2563eb]/12 bg-white shadow-[0_2px_10px_-4px_rgba(37,99,235,0.15)] mb-7">
-            <span className="text-[#2563eb]">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" strokeLinejoin="round" /></svg>
+            <span className="text-[#f59e0b]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#f59e0b" stroke="#f59e0b" strokeWidth="1.5"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" strokeLinejoin="round" /></svg>
             </span>
             <span className="text-xs font-medium text-[#2563eb]/70">Your business, on autopilot.</span>
           </div>
 
           <h1 className="font-display text-[2.9rem] sm:text-6xl lg:text-[4.6rem] font-bold leading-[1.02] tracking-tight text-[#2563eb] mb-6">
-            Reply faster.
+            Reply{' '}
+            <span className="relative inline-block">
+              faster
+              <span aria-hidden="true" className="absolute left-0 right-0 -bottom-1 h-[0.18em] rounded-full bg-[#f59e0b]" />
+            </span>
+            .
             <br />
             Miss fewer customers.
           </h1>

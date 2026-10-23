@@ -67,7 +67,7 @@ export default function TrustStrip() {
     <section id="industries" className="py-20 md:py-28 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">Who we work with</p>
+          <p className="flex items-center justify-center gap-2 text-xs font-semibold text-[#2563eb]/50 uppercase tracking-[0.2em] mb-4"><span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]" />Who we work with</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight">
             Built for the businesses that live in the DMs
           </h2>

@@ -23,7 +23,7 @@ export default function HowItWorks() {
     <section id="how-it-works" className="py-20 md:py-28 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
-          <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">How it works</p>
+          <p className="flex items-center justify-center gap-2 text-xs font-semibold text-[#2563eb]/50 uppercase tracking-[0.2em] mb-4"><span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]" />How it works</p>
           <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight">
             Live in weeks, not months
           </h2>

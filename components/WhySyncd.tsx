@@ -34,7 +34,7 @@ export default function WhySyncd() {
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Left — headline */}
           <div className="md:sticky md:top-28">
-            <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">Why SYNCD</p>
+            <p className="flex items-center gap-2 text-xs font-semibold text-[#2563eb]/50 uppercase tracking-[0.2em] mb-4"><span className="w-1.5 h-1.5 rounded-full bg-[#f59e0b]" />Why SYNCD</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight mb-5">
               Serious automation, built for MENA
             </h2>
