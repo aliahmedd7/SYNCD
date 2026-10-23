@@ -22,7 +22,7 @@ export default function Hero() {
             <span className="text-xs font-medium text-[#2563eb]/70">Your business, on autopilot.</span>
           </div>
 
-          <h1 className="text-[2.9rem] sm:text-6xl lg:text-[4.6rem] font-bold leading-[1.02] tracking-tight text-[#2563eb] mb-6">
+          <h1 className="font-display text-[2.9rem] sm:text-6xl lg:text-[4.6rem] font-bold leading-[1.02] tracking-tight text-[#2563eb] mb-6">
             Reply faster.
             <br />
             Miss fewer customers.

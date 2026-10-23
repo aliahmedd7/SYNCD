@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const pillars = [
   {
     title: 'Built for Arabic + English',
@@ -33,7 +35,7 @@ export default function WhySyncd() {
           {/* Left — headline */}
           <div className="md:sticky md:top-28">
             <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">Why SYNCD</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#2563eb] leading-tight tracking-tight mb-5">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight mb-5">
               Serious automation, built for MENA
             </h2>
             <p className="text-lg text-[#2563eb]/55 leading-relaxed max-w-sm">
@@ -43,7 +45,7 @@ export default function WhySyncd() {
           </div>
 
           {/* Right — list */}
-          <div className="grid grid-cols-1 gap-4">
+          <Reveal className="grid grid-cols-1 gap-4" stagger={80}>
             {pillars.map((p) => (
               <div
                 key={p.title}
@@ -58,7 +60,7 @@ export default function WhySyncd() {
                 </div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

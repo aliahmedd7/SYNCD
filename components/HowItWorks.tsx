@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const steps = [
   {
     number: '01',
@@ -22,12 +24,12 @@ export default function HowItWorks() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-14 md:mb-16">
           <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">How it works</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#2563eb] leading-tight tracking-tight">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight">
             Live in weeks, not months
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5">
+        <Reveal className="grid md:grid-cols-3 gap-5" stagger={90}>
           {steps.map((s) => (
             <div
               key={s.number}
@@ -41,7 +43,7 @@ export default function HowItWorks() {
               <p className="text-[15px] text-[#2563eb]/55 leading-relaxed">{s.body}</p>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
-import { Outfit, Geist_Mono } from 'next/font/google'
+import { Outfit, Space_Grotesk, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
 const outfit = Outfit({ variable: '--font-outfit', subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({ variable: '--font-space-grotesk', subsets: ['latin'] })
 const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${spaceGrotesk.variable} ${geistMono.variable}`}>
       <body className="bg-white text-[#2563eb] antialiased">{children}</body>
     </html>
   )

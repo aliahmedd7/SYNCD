@@ -12,7 +12,7 @@ export default function CtaBand() {
         />
 
         <div className="relative">
-          <h2 className="text-[2.4rem] sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-white mb-5">
+          <h2 className="font-display text-[2.4rem] sm:text-5xl md:text-6xl font-bold leading-[1.05] tracking-tight text-white mb-5">
             Stop missing customers.
           </h2>
           <p className="text-lg text-white/60 max-w-xl mx-auto leading-relaxed mb-10">

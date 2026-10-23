@@ -1,3 +1,5 @@
+import Reveal from './Reveal'
+
 const niches = [
   {
     name: 'E-commerce',
@@ -66,7 +68,7 @@ export default function TrustStrip() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
           <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">Who we work with</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#2563eb] leading-tight tracking-tight">
+          <h2 className="font-display text-4xl md:text-5xl font-bold text-[#2563eb] leading-[1.05] tracking-tight">
             Built for the businesses that live in the DMs
           </h2>
           <p className="text-lg text-[#2563eb]/55 mt-5 leading-relaxed">
@@ -74,7 +76,7 @@ export default function TrustStrip() {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+        <Reveal className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5" stagger={60}>
           {niches.map((n) => (
             <div
               key={n.name}
@@ -91,7 +93,7 @@ export default function TrustStrip() {
               </div>
             </div>
           ))}
-        </div>
+        </Reveal>
 
         <p className="text-center text-sm text-[#2563eb]/45 mt-10">
           Not on the list? If your customers message you, we can help. Let’s talk.

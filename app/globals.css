@@ -13,6 +13,26 @@
   --font-mono: var(--font-geist-mono);
 }
 
+.font-display {
+  font-family: var(--font-space-grotesk), var(--font-outfit), Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Scroll-reveal (staggered) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px) scale(0.985);
+  transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; transition: none; }
+}
+
 * {
   box-sizing: border-box;
 }
