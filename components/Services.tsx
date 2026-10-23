@@ -1,4 +1,4 @@
-﻿const pillars = [
+const pillars = [
   {
     badge: 'Lead Service',
     title: 'AI Conversation & DM Automation',
@@ -41,14 +41,14 @@
 
 export default function Services() {
   return (
-    <section id="services" className="py-20 md:py-28 px-6 bg-[#f6f1ea]">
+    <section id="services" className="py-20 md:py-28 px-6 bg-[#eff4ff]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <p className="text-xs font-semibold text-[#4a3528]/40 uppercase tracking-[0.2em] mb-4">What we do</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#4a3528] leading-tight tracking-tight">
+          <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">What we do</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#2563eb] leading-tight tracking-tight">
             Two AI agents that run your front desk
           </h2>
-          <p className="text-lg text-[#4a3528]/55 mt-5 leading-relaxed">
+          <p className="text-lg text-[#2563eb]/55 mt-5 leading-relaxed">
             We start with one painful workflow, then connect your tools into a system that runs itself.
           </p>
         </div>
@@ -58,28 +58,28 @@ export default function Services() {
           {pillars.map((p) => (
             <div
               key={p.title}
-              className="bg-white border border-[#4a3528]/[0.08] rounded-3xl p-8 flex flex-col
-                         shadow-[0_4px_30px_-16px_rgba(74,53,40,0.25)] transition-all duration-300
-                         hover:-translate-y-1 hover:shadow-[0_18px_50px_-20px_rgba(74,53,40,0.3)]"
+              className="bg-white border border-[#2563eb]/[0.08] rounded-3xl p-8 flex flex-col
+                         shadow-[0_4px_30px_-16px_rgba(37,99,235,0.25)] transition-all duration-300
+                         hover:-translate-y-1 hover:shadow-[0_18px_50px_-20px_rgba(37,99,235,0.3)]"
             >
               <div className="flex items-center justify-between mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-[#4a3528] flex items-center justify-center text-white">
+                <div className="w-12 h-12 rounded-2xl bg-[#2563eb] flex items-center justify-center text-white">
                   {p.icon}
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#4a3528]/50 bg-[#f1ebe3] rounded-full px-3 py-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#2563eb]/50 bg-[#eef2ff] rounded-full px-3 py-1.5">
                   {p.badge}
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold text-[#4a3528] mb-1">{p.title}</h3>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#4a3528]/40 mb-4">{p.sub}</p>
-              <p className="text-[15px] text-[#4a3528]/55 leading-relaxed mb-7">{p.description}</p>
+              <h3 className="text-xl font-bold text-[#2563eb] mb-1">{p.title}</h3>
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#2563eb]/40 mb-4">{p.sub}</p>
+              <p className="text-[15px] text-[#2563eb]/55 leading-relaxed mb-7">{p.description}</p>
 
-              <ul className="flex flex-col gap-3 mt-auto pt-6 border-t border-[#4a3528]/[0.08]">
+              <ul className="flex flex-col gap-3 mt-auto pt-6 border-t border-[#2563eb]/[0.08]">
                 {p.points.map((pt) => (
-                  <li key={pt} className="flex items-start gap-3 text-sm text-[#4a3528]/70 leading-relaxed">
-                    <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-[#4a3528]/[0.08] flex items-center justify-center">
-                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4a3528" strokeWidth="3"><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                  <li key={pt} className="flex items-start gap-3 text-sm text-[#2563eb]/70 leading-relaxed">
+                    <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-[#2563eb]/[0.08] flex items-center justify-center">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="3"><path d="M20 6 9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>
                     {pt}
                   </li>
@@ -90,7 +90,7 @@ export default function Services() {
         </div>
 
         {/* Custom Automations */}
-        <div className="mt-5 rounded-3xl bg-[#4a3528] p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
+        <div className="mt-5 rounded-3xl bg-[#2563eb] p-8 md:p-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-10">
           <div className="flex items-center gap-4 md:flex-shrink-0">
             <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">

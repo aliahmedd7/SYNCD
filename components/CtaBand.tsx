@@ -1,14 +1,14 @@
-﻿import { WHATSAPP_AUDIT_URL } from '@/lib/site'
+import { WHATSAPP_AUDIT_URL } from '@/lib/site'
 
 export default function CtaBand() {
   return (
     <section id="book" className="px-6 py-16 md:py-24 bg-white">
-      <div className="relative max-w-5xl mx-auto overflow-hidden rounded-[2rem] bg-[#4a3528] px-6 py-16 md:py-20 text-center">
+      <div className="relative max-w-5xl mx-auto overflow-hidden rounded-[2rem] bg-[#2563eb] px-6 py-16 md:py-20 text-center">
         {/* Soft glow */}
         <div
           aria-hidden="true"
           className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(600px 300px at 50% 0%, rgba(150,110,75,0.25) 0%, transparent 60%)' }}
+          style={{ background: 'radial-gradient(600px 300px at 50% 0%, rgba(37,99,235,0.25) 0%, transparent 60%)' }}
         />
 
         <div className="relative">
@@ -24,7 +24,7 @@ export default function CtaBand() {
             href={WHATSAPP_AUDIT_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#4a3528] text-[15px] font-semibold hover:bg-white/90 transition-colors"
+            className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-[#2563eb] text-[15px] font-semibold hover:bg-white/90 transition-colors"
           >
             Book Your Audit
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

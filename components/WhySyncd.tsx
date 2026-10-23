@@ -1,4 +1,4 @@
-﻿const pillars = [
+const pillars = [
   {
     title: 'Built for Arabic + English',
     body: 'Your customers message in Arabic, English, or a mix of both. Our agents handle it naturally — the way your customers actually talk.',
@@ -27,16 +27,16 @@ function CheckIcon() {
 
 export default function WhySyncd() {
   return (
-    <section id="why-us" className="py-20 md:py-28 px-6 bg-[#f6f1ea]">
+    <section id="why-us" className="py-20 md:py-28 px-6 bg-[#eff4ff]">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           {/* Left — headline */}
           <div className="md:sticky md:top-28">
-            <p className="text-xs font-semibold text-[#4a3528]/40 uppercase tracking-[0.2em] mb-4">Why SYNCD</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#4a3528] leading-tight tracking-tight mb-5">
+            <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">Why SYNCD</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#2563eb] leading-tight tracking-tight mb-5">
               Serious automation, built for MENA
             </h2>
-            <p className="text-lg text-[#4a3528]/55 leading-relaxed max-w-sm">
+            <p className="text-lg text-[#2563eb]/55 leading-relaxed max-w-sm">
               Plenty of people can wire up a chatbot. We build systems your business can actually run on —
               reliable, bilingual, and backed by real people.
             </p>
@@ -47,14 +47,14 @@ export default function WhySyncd() {
             {pillars.map((p) => (
               <div
                 key={p.title}
-                className="flex gap-4 rounded-2xl border border-[#4a3528]/[0.08] bg-white p-6 shadow-[0_4px_30px_-18px_rgba(74,53,40,0.22)]"
+                className="flex gap-4 rounded-2xl border border-[#2563eb]/[0.08] bg-white p-6 shadow-[0_4px_30px_-18px_rgba(37,99,235,0.22)]"
               >
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#4a3528] text-white flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#2563eb] text-white flex items-center justify-center">
                   <CheckIcon />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#4a3528] mb-1.5">{p.title}</h3>
-                  <p className="text-sm text-[#4a3528]/55 leading-relaxed">{p.body}</p>
+                  <h3 className="text-base font-bold text-[#2563eb] mb-1.5">{p.title}</h3>
+                  <p className="text-sm text-[#2563eb]/55 leading-relaxed">{p.body}</p>
                 </div>
               </div>
             ))}

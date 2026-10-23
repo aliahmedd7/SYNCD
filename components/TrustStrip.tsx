@@ -1,4 +1,4 @@
-﻿const niches = [
+const niches = [
   {
     name: 'E-commerce',
     blurb: 'Answer product & order questions, recover carts, and close sales right in the DMs.',
@@ -65,11 +65,11 @@ export default function TrustStrip() {
     <section id="industries" className="py-20 md:py-28 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
-          <p className="text-xs font-semibold text-[#4a3528]/40 uppercase tracking-[0.2em] mb-4">Who we work with</p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#4a3528] leading-tight tracking-tight">
+          <p className="text-xs font-semibold text-[#2563eb]/40 uppercase tracking-[0.2em] mb-4">Who we work with</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#2563eb] leading-tight tracking-tight">
             Built for the businesses that live in the DMs
           </h2>
-          <p className="text-lg text-[#4a3528]/55 mt-5 leading-relaxed">
+          <p className="text-lg text-[#2563eb]/55 mt-5 leading-relaxed">
             If customers message you to buy, book, or ask — SYNCD was built for your niche.
           </p>
         </div>
@@ -78,22 +78,22 @@ export default function TrustStrip() {
           {niches.map((n) => (
             <div
               key={n.name}
-              className="flex items-start gap-4 rounded-2xl border border-[#4a3528]/[0.08] bg-white p-6
-                         shadow-[0_4px_30px_-18px_rgba(74,53,40,0.22)] transition-all duration-300
-                         hover:-translate-y-1 hover:shadow-[0_18px_45px_-20px_rgba(74,53,40,0.28)]"
+              className="flex items-start gap-4 rounded-2xl border border-[#2563eb]/[0.08] bg-white p-6
+                         shadow-[0_4px_30px_-18px_rgba(37,99,235,0.22)] transition-all duration-300
+                         hover:-translate-y-1 hover:shadow-[0_18px_45px_-20px_rgba(37,99,235,0.28)]"
             >
-              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#4a3528] text-white flex items-center justify-center">
+              <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-[#2563eb] text-white flex items-center justify-center">
                 {n.icon}
               </div>
               <div>
-                <h3 className="text-base font-bold text-[#4a3528] mb-1">{n.name}</h3>
-                <p className="text-sm text-[#4a3528]/55 leading-relaxed">{n.blurb}</p>
+                <h3 className="text-base font-bold text-[#2563eb] mb-1">{n.name}</h3>
+                <p className="text-sm text-[#2563eb]/55 leading-relaxed">{n.blurb}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-center text-sm text-[#4a3528]/45 mt-10">
+        <p className="text-center text-sm text-[#2563eb]/45 mt-10">
           Not on the list? If your customers message you, we can help. Let’s talk.
         </p>
       </div>

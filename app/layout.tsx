@@ -1,4 +1,4 @@
-﻿import type { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Outfit, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${outfit.variable} ${geistMono.variable}`}>
-      <body className="bg-white text-[#4a3528] antialiased">{children}</body>
+      <body className="bg-white text-[#2563eb] antialiased">{children}</body>
     </html>
   )
 }

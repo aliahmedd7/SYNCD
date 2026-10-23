@@ -1,10 +1,10 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
   --bg: #ffffff;
-  --navy: #4a3528;
-  --muted: rgba(74,53,40,0.6);
-  --border: rgba(74,53,40,0.10);
+  --navy: #2563eb;
+  --muted: rgba(37,99,235,0.6);
+  --border: rgba(37,99,235,0.10);
   --lavender: #a0724b;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 ::selection {
-  background: #4a3528;
+  background: #2563eb;
   color: #ffffff;
 }
 
